@@ -4,36 +4,37 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ForgetComponent } from './pages/forget/forget.component';
 import { MainComponent } from './layouts/main/main.component';
+import { AuthGuard } from './guards/auth.guard';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
-    {
-        path:'',
-        pathMatch:'full',
-        redirectTo:'auth'
-    },
   {
-    path :'login',
-    component:LoginComponent
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'auth'
   },
   {
-    path:'signup',
-    component:RegisterComponent
+    path: 'login',
+    component: LoginComponent
   },
   {
-    path:'forget-password',
-    component:ForgetComponent
+    path: 'signup',
+    component: RegisterComponent
   },
   {
-    path:'auth',
-    pathMatch:'full',
-    component:MainComponent,
-    canActivate:[],
-    children:[
-        {
+    path: 'forget-password',
+    component: ForgetComponent
+  },
+  {
+    path: 'auth',
+    pathMatch: 'prefix',
+    component: MainComponent,
+    canActivate: [AuthGuard],
 
-        }
-    ]
-
+  },
+  {
+    path: '**',
+    component:NotFoundComponent
   }
 ]; // sets up routes constant where you define your routes
 
