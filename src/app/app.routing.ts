@@ -4,7 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ForgetComponent } from './pages/forget/forget.component';
 import { MainComponent } from './layouts/main/main.component';
-import { AuthGuard } from './guards/auth.guard';
+import {  UserLoggedInGuard, UserLoggedOutGuard } from './guards/auth.guard';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
@@ -15,6 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
+    canActivate:[UserLoggedOutGuard],
     component: LoginComponent
   },
   {
@@ -29,7 +30,7 @@ const routes: Routes = [
     path: 'auth',
     pathMatch: 'prefix',
     component: MainComponent,
-    canActivate: [AuthGuard],
+    canActivate: [UserLoggedInGuard],
 
   },
   {

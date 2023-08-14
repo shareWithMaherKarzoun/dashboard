@@ -1,29 +1,31 @@
-<div class="page login text-t-color">
+<div class="page login">
   <form
     [formGroup]="loginForm"
-    (ngSubmit)="login()"
+    (ngSubmit)="login($event)"
     class="shadow-md p-6 bg-form-dark rounded-lg"
   >
     <h1 class="text-form-header text-center text-4xl mb-4">Dashboard</h1>
 
     <div class="form-group p-1 flex items-center gap-4">
-      <label for="username" class="w-1/2">Email</label>
+      <label for="username" class="w-1/2 text-t-color">Email</label>
       <input
         type="email"
+        [ngClass]="{'error' : usernameErrors}"
         formControlName="username"
         class="drop-shadow-sm grow p-1"
       />
     </div>
     <div class="form-group p-1 flex items-center gap-4">
-      <label for="password" class="w-1/2">Password</label>
+      <label for="password" class="w-1/2 text-t-color">Password</label>
       <input
         type="password"
+        [ngClass]="{'error' : passwordErrors}"
         formControlName="password"
         class="drop-shadow-sm grow p-1"
       />
     </div>
     <div class="form-group p-1">
-      <button class="bg-form-origin p-2 w-full rounded-md">Login</button>
+      <button type="submit" class="bg-form-origin p-2 w-full rounded-md text-t-color">Login</button>
     </div>
   </form>
 </div>

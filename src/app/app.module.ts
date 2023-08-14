@@ -9,6 +9,7 @@ import { ForgetComponent } from './pages/forget/forget.component';
 import { MainComponent } from './layouts/main/main.component';
 import { AppRoutingModule } from './app.routing';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
    ],
   providers: [],
   bootstrap: [AppComponent]
